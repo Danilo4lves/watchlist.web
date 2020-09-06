@@ -1,8 +1,8 @@
 // Dependencies
-import React from "react";
+import React from 'react';
 
 // Styled components
-import { Container } from "./styles";
+import { Container } from './styles';
 
 function App() {
   return (
