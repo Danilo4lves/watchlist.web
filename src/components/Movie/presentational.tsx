@@ -51,7 +51,7 @@ function Movie(props: MoviePropsInterface) {
     const formattedDate = format(releaseDateInstance, 'dd/MM/yyyy');
 
     return formattedDate;
-  }, []);
+  }, [releaseDate]);
 
   return (
     <Container className={className}>
