@@ -10,4 +10,5 @@ export interface MovieInterface {
 
 export interface AppPresentationalPropsInterface {
   moviesList: MovieInterface[];
+  removeMovie(id: string): Promise<void>;
 }

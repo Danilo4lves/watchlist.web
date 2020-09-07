@@ -11,7 +11,11 @@ import { Container, SearchInput, MoviesContainer } from './styles';
 import { AppPresentationalPropsInterface } from './types';
 
 function AppPresentational(props: AppPresentationalPropsInterface) {
-  const { moviesList } = props;
+  const {
+    moviesList,
+
+    removeMovie,
+  } = props;
 
   return (
     <Container>
@@ -38,6 +42,9 @@ function AppPresentational(props: AppPresentationalPropsInterface) {
               categories={categories}
               hasBeenWatched={has_been_watched}
               isBeingWatched={is_being_watched}
+              deleteButtonOnClick={async () => {
+                await removeMovie(id);
+              }}
             />
           );
         })}

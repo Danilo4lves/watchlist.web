@@ -13,6 +13,24 @@ import { MovieInterface } from './types';
 function App() {
   const [moviesList, setMoviesList] = React.useState<MovieInterface[]>([]);
 
+  const removeMovie = React.useCallback(
+    async (id: string) => {
+      const apiResponse = await MovieService.remove(id);
+
+      if (apiResponse?.data?.ok) {
+        const { data = {} } = apiResponse;
+        const { data: deletedMovie } = data;
+
+        const newMoviesList = moviesList.filter(
+          movie => deletedMovie?.id !== movie?.id,
+        );
+
+        setMoviesList(newMoviesList);
+      }
+    },
+    [moviesList],
+  );
+
   React.useEffect(() => {
     async function fetchMoviesList() {
       const apiResponse = await MovieService.getAll();
@@ -32,6 +50,8 @@ function App() {
 
   return React.createElement(AppPresentational, {
     moviesList,
+
+    removeMovie,
   });
 }
 
