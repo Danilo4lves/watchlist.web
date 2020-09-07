@@ -9,6 +9,7 @@ export interface MovieInterface {
 }
 
 export interface AppPresentationalPropsInterface {
-  moviesList: MovieInterface[];
+  filteredMoviesList: MovieInterface[];
   removeMovie(id: string): Promise<void>;
+  handleSearchInputOnChange(event: React.ChangeEvent<HTMLInputElement>): void;
 }

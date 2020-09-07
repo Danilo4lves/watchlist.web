@@ -12,6 +12,9 @@ import { MovieInterface } from './types';
 
 function App() {
   const [moviesList, setMoviesList] = React.useState<MovieInterface[]>([]);
+  const [filteredMoviesList, setFilteredMoviesList] = React.useState<
+    MovieInterface[]
+  >([]);
 
   const removeMovie = React.useCallback(
     async (id: string) => {
@@ -48,10 +51,34 @@ function App() {
     fetchMoviesList();
   }, []);
 
+  React.useEffect(() => {
+    setFilteredMoviesList([...moviesList]);
+  }, [moviesList]);
+
+  const handleSearchInputOnChange = React.useCallback(
+    event => {
+      const { target = {} } = event;
+      const { value } = target;
+
+      const newFilteredMoviesList = moviesList.filter(movie => {
+        const { title } = movie;
+
+        const upperCaseSearchTerm = value?.toUpperCase();
+        const upperCaseMovieTitle = title?.toUpperCase();
+
+        return upperCaseMovieTitle?.includes(upperCaseSearchTerm);
+      });
+
+      setFilteredMoviesList(newFilteredMoviesList);
+    },
+    [moviesList],
+  );
+
   return React.createElement(AppPresentational, {
-    moviesList,
+    filteredMoviesList,
 
     removeMovie,
+    handleSearchInputOnChange,
   });
 }
 
