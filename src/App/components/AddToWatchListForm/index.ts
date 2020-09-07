@@ -5,7 +5,12 @@ import { useForm } from 'react-hook-form';
 // Presentational
 import AddToWatchListFormPresentational from './presentational';
 
-function AddToWatchListForm() {
+// Types
+import { AddToWatchListFormPropsInterface } from './types';
+
+function AddToWatchListForm(props: AddToWatchListFormPropsInterface) {
+  const { closeForm } = props;
+
   const { register, formState, handleSubmit } = useForm();
   const { isValid } = formState;
 
@@ -14,6 +19,8 @@ function AddToWatchListForm() {
   }, []);
 
   return React.createElement(AddToWatchListFormPresentational, {
+    closeForm,
+
     register,
     handleSubmit,
     isValid,

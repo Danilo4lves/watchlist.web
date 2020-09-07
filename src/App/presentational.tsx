@@ -6,7 +6,14 @@ import { Movie } from '../components';
 import { AddToWatchListForm } from './components';
 
 // Styled components
-import { Container, SearchInput, MoviesContainer } from './styles';
+import {
+  Container,
+  SearchInputContainer,
+  SearchInput,
+  AddButton,
+  AddIcon,
+  MoviesContainer,
+} from './styles';
 
 // Types
 import { AppPresentationalPropsInterface } from './types';
@@ -16,16 +23,36 @@ function AppPresentational(props: AppPresentationalPropsInterface) {
     searchInputRef,
 
     filteredMoviesList,
+    isWatchFormOpen,
 
     removeMovie,
     handleSearchInputOnChange,
+    openWatchForm,
+    closeWatchForm,
   } = props;
+
+  const renderWatchForm = React.useCallback(() => {
+    if (isWatchFormOpen) {
+      return <AddToWatchListForm closeForm={closeWatchForm} />;
+    }
+
+    return null;
+  }, [isWatchFormOpen, closeWatchForm]);
 
   return (
     <Container>
-      <SearchInput ref={searchInputRef} onChange={handleSearchInputOnChange} />
+      <SearchInputContainer>
+        <SearchInput
+          ref={searchInputRef}
+          onChange={handleSearchInputOnChange}
+        />
 
-      <AddToWatchListForm />
+        <AddButton onClick={openWatchForm}>
+          <AddIcon />
+        </AddButton>
+      </SearchInputContainer>
+
+      {renderWatchForm()}
 
       <MoviesContainer>
         {filteredMoviesList.map(movie => {

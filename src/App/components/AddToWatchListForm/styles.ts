@@ -1,5 +1,5 @@
 // Dependencies
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 // Styled components
 import { SearchInput } from '../../styles';
@@ -123,35 +123,4 @@ export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
-`;
-
-export const Button = styled.button<{ isDisabled?: boolean }>`
-  height: 40px;
-  padding: 4px 12px;
-
-  color: #627179;
-  font-size: 14px;
-  line-height: 12px;
-  font-weight: 600;
-
-  border-width: 1px;
-  border-style: solid;
-  border-color: #dae0e3;
-  border-radius: 20px;
-  background-color: white;
-  outline: none;
-
-  cursor: pointer;
-
-  &:first-child {
-    margin-right: 8px;
-  }
-
-  ${({ isDisabled }) =>
-    isDisabled &&
-    css`
-      opacity: 0.5;
-
-      pointer-events: none;
-    `};
 `;

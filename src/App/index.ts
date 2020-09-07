@@ -82,13 +82,26 @@ function App() {
     [moviesList],
   );
 
+  const [isWatchFormOpen, setIsWatchFormOpen] = React.useState(false);
+
+  const openWatchForm = React.useCallback(() => {
+    setIsWatchFormOpen(true);
+  }, []);
+
+  const closeWatchForm = React.useCallback(() => {
+    setIsWatchFormOpen(false);
+  }, []);
+
   return React.createElement(AppPresentational, {
     searchInputRef,
 
     filteredMoviesList,
+    isWatchFormOpen,
 
     removeMovie,
     handleSearchInputOnChange,
+    openWatchForm,
+    closeWatchForm,
   });
 }
 

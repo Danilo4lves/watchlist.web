@@ -20,6 +20,11 @@ type FormValues = {
 };
 
 export interface AddToWatchListFormPropsInterface {
+  closeForm(): void;
+}
+
+export interface AddToWatchListFormPresentationalPropsInterface
+  extends AddToWatchListFormPropsInterface {
   register<TFieldElement extends FieldElement<FormValues>>(
     rules?: ValidationRules,
   ): (ref: (TFieldElement & Ref) | null) => void;

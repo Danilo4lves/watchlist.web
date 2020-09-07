@@ -2,6 +2,8 @@
 import React from 'react';
 
 // Styled components
+import { Button } from '../../styles';
+
 import {
   Container,
   InputsContainer,
@@ -11,16 +13,17 @@ import {
   Input,
   DateInput,
   ButtonsContainer,
-  Button,
 } from './styles';
 
 // Types
-import { AddToWatchListFormPropsInterface } from './types';
+import { AddToWatchListFormPresentationalPropsInterface } from './types';
 
 function AddToWatchListFormPresentational(
-  props: AddToWatchListFormPropsInterface,
+  props: AddToWatchListFormPresentationalPropsInterface,
 ) {
   const {
+    closeForm,
+
     register,
     handleSubmit,
     isValid,
@@ -112,7 +115,7 @@ function AddToWatchListFormPresentational(
       </InputsContainer>
 
       <ButtonsContainer>
-        <Button>Cancelar</Button>
+        <Button onClick={closeForm}>Cancelar</Button>
 
         <Button isDisabled={!isValid}>Criar</Button>
       </ButtonsContainer>
