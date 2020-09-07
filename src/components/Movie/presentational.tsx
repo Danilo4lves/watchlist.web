@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react';
+import { format } from 'date-fns';
 
 // Styled components
 import {
@@ -44,6 +45,13 @@ function Movie(props: MoviePropsInterface) {
     watchedBadgeLabel = 'Assistindo';
   }
 
+  const formattedReleaseDate = React.useMemo(() => {
+    const releaseDateInstance = new Date(releaseDate);
+    const formattedDate = format(releaseDateInstance, 'dd/MM/yyyy');
+
+    return formattedDate;
+  }, []);
+
   return (
     <Container className={className}>
       <Content>
@@ -67,7 +75,7 @@ function Movie(props: MoviePropsInterface) {
         </BadgesContainer>
 
         <ReleaseDate>
-          Data de lançamento: <strong>{releaseDate}</strong>
+          Data de lançamento: <strong>{formattedReleaseDate}</strong>
         </ReleaseDate>
 
         <BadgesContainer>
