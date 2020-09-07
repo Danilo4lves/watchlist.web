@@ -7,4 +7,5 @@ export interface MoviePropsInterface {
   categories: string[];
   hasBeenWatched: boolean;
   isBeingWatched: boolean;
+  deleteButtonOnClick(): void;
 }

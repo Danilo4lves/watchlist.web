@@ -31,6 +31,7 @@ function Movie(props: MoviePropsInterface) {
     categories = [],
     hasBeenWatched,
     isBeingWatched,
+    deleteButtonOnClick,
   } = props;
 
   const tooltipId = `movie-synopsis-tooltip-id-${id}`;
@@ -90,7 +91,7 @@ function Movie(props: MoviePropsInterface) {
           <span>Editar</span>
         </UpdateButton>
 
-        <DeleteButton>
+        <DeleteButton onClick={deleteButtonOnClick}>
           <span>Remover</span>
         </DeleteButton>
       </ActionsContainer>
