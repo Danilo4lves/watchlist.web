@@ -10,9 +10,16 @@ function MovieApi() {
     return apiResponse;
   }
 
+  async function remove(id: string) {
+    const apiResponse = await api.delete(`${MAIN_ENDPOINT}/${id}`);
+
+    return apiResponse;
+  }
+
   return {
     MAIN_ENDPOINT,
     getAll,
+    remove,
   };
 }
 

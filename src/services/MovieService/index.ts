@@ -8,8 +8,15 @@ function MovieService() {
     return apiResponse;
   }
 
+  async function remove(id: string) {
+    const apiResponse = await MovieApi.remove(id);
+
+    return apiResponse;
+  }
+
   return {
     getAll,
+    remove,
   };
 }
 
