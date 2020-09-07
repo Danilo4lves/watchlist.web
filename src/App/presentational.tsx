@@ -12,6 +12,8 @@ import { AppPresentationalPropsInterface } from './types';
 
 function AppPresentational(props: AppPresentationalPropsInterface) {
   const {
+    searchInputRef,
+
     filteredMoviesList,
 
     removeMovie,
@@ -20,7 +22,7 @@ function AppPresentational(props: AppPresentationalPropsInterface) {
 
   return (
     <Container>
-      <SearchInput onChange={handleSearchInputOnChange} />
+      <SearchInput ref={searchInputRef} onChange={handleSearchInputOnChange} />
 
       <MoviesContainer>
         {filteredMoviesList.map(movie => {

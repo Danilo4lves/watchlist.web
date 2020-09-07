@@ -9,6 +9,7 @@ export interface MovieInterface {
 }
 
 export interface AppPresentationalPropsInterface {
+  searchInputRef: React.RefObject<HTMLInputElement> | null;
   filteredMoviesList: MovieInterface[];
   removeMovie(id: string): Promise<void>;
   handleSearchInputOnChange(event: React.ChangeEvent<HTMLInputElement>): void;

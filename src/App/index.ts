@@ -11,6 +11,10 @@ import { MovieService } from '../services';
 import { MovieInterface } from './types';
 
 function App() {
+  const searchInputRef: React.RefObject<HTMLInputElement> | null = React.useRef<
+    HTMLInputElement
+  >(null);
+
   const [moviesList, setMoviesList] = React.useState<MovieInterface[]>([]);
   const [filteredMoviesList, setFilteredMoviesList] = React.useState<
     MovieInterface[]
@@ -29,6 +33,10 @@ function App() {
         );
 
         setMoviesList(newMoviesList);
+
+        if (searchInputRef?.current) {
+          searchInputRef.current.value = '';
+        }
       }
     },
     [moviesList],
@@ -75,6 +83,8 @@ function App() {
   );
 
   return React.createElement(AppPresentational, {
+    searchInputRef,
+
     filteredMoviesList,
 
     removeMovie,
