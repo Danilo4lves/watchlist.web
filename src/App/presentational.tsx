@@ -7,65 +7,43 @@ import { Movie } from '../components';
 // Styled components
 import { Container, SearchInput, MoviesContainer } from './styles';
 
-function App() {
+// Types
+import { AppPresentationalPropsInterface } from './types';
+
+function AppPresentational(props: AppPresentationalPropsInterface) {
+  const { moviesList } = props;
+
   return (
     <Container>
       <SearchInput />
 
       <MoviesContainer>
-        <Movie
-          id="1"
-          title="Pitch Perfect"
-          synopsis="Pitch Perfect é uma série de filmes de comédia musical americana criada por Kay Cannon, vagamente baseada no livro de não ficção Pitch Perfect: The Quest for Collegiate a Cappella Glory de Mickey Rapkin. Jason Moore dirigiu o primeiro filme, e Elizabeth Banks dirigiu o segundo e Trish Sie dirigiu o terceiro."
-          releaseDate="2020-07-22"
-          categories={[
-            'Comédia',
-            'Musical',
-            'Teste 1',
-            'Teste 2',
-            'Teste 3',
-            'teste 4',
-          ]}
-          hasBeenWatched={false}
-          isBeingWatched={false}
-        />
+        {moviesList.map(movie => {
+          const {
+            id,
+            title,
+            synopsis,
+            release_date,
+            categories,
+            has_been_watched,
+            is_being_watched,
+          } = movie;
 
-        <Movie
-          id="2"
-          title="Pitch Perfect"
-          synopsis="Pitch Perfect é uma série de filmes de comédia musical americana criada por Kay Cannon, vagamente baseada no livro de não ficção Pitch Perfect: The Quest for Collegiate a Cappella Glory de Mickey Rapkin. Jason Moore dirigiu o primeiro filme, e Elizabeth Banks dirigiu o segundo e Trish Sie dirigiu o terceiro."
-          releaseDate="2020-07-22"
-          categories={[
-            'Comédia',
-            'Musical',
-            'Teste 1',
-            'Teste 2',
-            'Teste 3',
-            'teste 4',
-          ]}
-          hasBeenWatched={true}
-          isBeingWatched={false}
-        />
-
-        <Movie
-          id="3"
-          title="Pitch Perfect"
-          synopsis="Pitch Perfect é uma série de filmes de comédia musical americana criada por Kay Cannon, vagamente baseada no livro de não ficção Pitch Perfect: The Quest for Collegiate a Cappella Glory de Mickey Rapkin. Jason Moore dirigiu o primeiro filme, e Elizabeth Banks dirigiu o segundo e Trish Sie dirigiu o terceiro."
-          releaseDate="2020-07-22"
-          categories={[
-            'Comédia',
-            'Musical',
-            'Teste 1',
-            'Teste 2',
-            'Teste 3',
-            'teste 4',
-          ]}
-          hasBeenWatched={true}
-          isBeingWatched={true}
-        />
+          return (
+            <Movie
+              id={id}
+              title={title}
+              synopsis={synopsis}
+              releaseDate={release_date}
+              categories={categories}
+              hasBeenWatched={has_been_watched}
+              isBeingWatched={is_being_watched}
+            />
+          );
+        })}
       </MoviesContainer>
     </Container>
   );
 }
 
-export default App;
+export default AppPresentational;
