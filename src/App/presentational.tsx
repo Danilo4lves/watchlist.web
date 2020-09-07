@@ -3,6 +3,7 @@ import React from 'react';
 
 // Components
 import { Movie } from '../components';
+import { AddToWatchListForm } from './components';
 
 // Styled components
 import { Container, SearchInput, MoviesContainer } from './styles';
@@ -23,6 +24,8 @@ function AppPresentational(props: AppPresentationalPropsInterface) {
   return (
     <Container>
       <SearchInput ref={searchInputRef} onChange={handleSearchInputOnChange} />
+
+      <AddToWatchListForm />
 
       <MoviesContainer>
         {filteredMoviesList.map(movie => {
