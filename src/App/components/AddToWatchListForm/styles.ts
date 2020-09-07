@@ -106,18 +106,20 @@ export const SelectInput = styled.select`
   }
 `;
 
-export const Input = styled(SearchInput).attrs(props => ({
+export const Input = styled(SearchInput).attrs({
   type: 'text',
   placeholder: '',
-  ...props,
-}))`
+})`
   width: 100%;
   margin-bottom: 0;
 `;
 
-export const DateInput = styled(Input).attrs({
+export const DateInput = styled(SearchInput).attrs({
   type: 'date',
-})``;
+})`
+  width: 100%;
+  margin-bottom: 0;
+`;
 
 export const ButtonsContainer = styled.div`
   display: flex;
