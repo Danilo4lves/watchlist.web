@@ -11,11 +11,11 @@ export const Container = styled.main`
   background-color: #ecf0f2;
 `;
 
-export const SearchInput = styled.input.attrs({
+export const SearchInput = styled.input.attrs(props => ({
   type: 'search',
   placeholder: 'Procurar',
-})`
-  margin-bottom: 30px;
+  ...props,
+}))`
   width: 600px;
   height: 40px;
   padding-left: 20px;
@@ -42,4 +42,5 @@ export const MoviesContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 400px);
   grid-gap: 10px;
+  margin-top: 30px;
 `;
